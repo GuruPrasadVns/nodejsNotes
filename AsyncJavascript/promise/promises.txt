@@ -1,0 +1,19 @@
+Promises
+#############################################################################################################
+A Promise is an object which holds the eventual result of an asynchronous operation.
+
+When an asynchronous operation completes its either results to a value or an error. A promise basically
+promises you that it will give you the result of an asynchronous operation.
+
+A Promise object can have either of these three states
+  - Pending
+  - Fulfilled
+  - Rejected
+
+When the Promise object is created it is in the Pending state. In this state it is about to kick off any async
+operation. When an async operation completes successfully it is in Fullfilled state or if some error occurs
+in the execution of the async operation it is in Rejected state.
+
+refer resolvePromise.js and rejectPromise.js
+
+

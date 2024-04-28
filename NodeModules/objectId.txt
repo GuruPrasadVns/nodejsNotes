@@ -1,0 +1,39 @@
+* ObjectId has 24 characters and every two characters represents a byte. So essentially we have 12 bytes two
+uniquely identified a document in mongoDB.
+
+* In these 12 bytes
+    - First 4 bytes represents the timestamp i.e. the time when this document is created. You can extract this
+      time and if you want to sort documents on their creation time simply sort them by their ObjectId.
+    
+    - Next 3 bytes represents the machine identifier 
+    - Next 2 bytes represents the process identifier.
+    - Last 3 bytes represents the counter.
+
+* Instead of this mechanism there are very very very but may be a chance of generating same objectId for two
+  separate documents.
+
+
+example,
+
+  const mongoose = require('mongoose');
+
+  const generatedObjectId = new mongoose.Types.ObjectId();
+  console.log(generatedObjectId);
+
+  // To get the timestamp from objectId
+
+  console.log(generatedObjectId.getTimeStamp());
+
+  // To validate objectId
+
+  console.log(mongoose.Types.ObjectId.isValid('1234')); // output will be false.
+
+
+  * To validate objectId we can use npm package joi-objectid.
+      $ npm i joi-objectid
+
+      Joi.objectId = require('joi-objectid').(Joi);
+
+      // To validate
+
+      customerId : Joi.objectId().required()
